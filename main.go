@@ -5,5 +5,5 @@ import (
 	)
 
 func main (){
-    fmt.Println("Golang testing 4")
+    fmt.Println("Golang testing 5")
 }
