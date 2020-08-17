@@ -1,3 +1,3 @@
 Spacemir new generation repo
 Module catalog
-trigger: 3
+trigger: 4
