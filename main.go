@@ -1,9 +1,17 @@
 package main
 
 import (
-	"fmt"
-	)
+    "fmt"
+    "log"
+    "net/http"
+)
 
-func main (){
-    fmt.Println("Golang testing 6")
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
 }
+
+func main() {
+    http.HandleFunc("/", rootHandler)
+    log.Fatal(http.ListenAndServe(":8000", nil))
+}
+
