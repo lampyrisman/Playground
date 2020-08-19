@@ -5,8 +5,7 @@ import (
     "log"
     "net/http"
     "github.com/jackc/pgx"
-    "github.com/jackc/pgconn"
-//    "context"
+    "context"
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
