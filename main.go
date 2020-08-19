@@ -19,10 +19,10 @@ type MenuStruct struct {
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
     config := pgx.ConnConfig{
-    Host:  "pg.sm"
-    Port: 5432
-    Database: "spaceworld"
-    User: "site"
+    Host:  "pg.sm",
+    Port: 5432,
+    Database: "spaceworld",
+    User: "site",
     Password: "siteread"
     }
 
