@@ -6,13 +6,13 @@ import (
     "net/http"
     "github.com/jackc/pgx"
     "github.com/jackc/pgconn"
-    "context"
+//    "context"
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
     var config *pgconn.Config
     config.Host = "pg.sm"
-    config.Port = "5432"
+    config.Port = 5432
     config.Database = "spaceworld"
     config.User = "site"
     config.Password = "siteread"
