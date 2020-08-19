@@ -39,17 +39,16 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	panic(err)
     }
 
-
-
     for rows.Next() {
 	var menuItem MenuStruct
 	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
 	if err != nil {
 	    panic(err)
 	}
-	menuItems = menuItems +" | "+  menuItem.Fieldname
+//	menuItems = menuItems +" | "+  menuItem.Fieldname
     }
     defer rows.Close()
+
     fmt.Fprintf(w, "ololo")
 //    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
