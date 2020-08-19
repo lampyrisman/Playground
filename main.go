@@ -26,7 +26,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 //    pgconfig.Password = "siteread"
 
 
-//    var menuItems string
+    var menuItems string
 
     conn, err := pgx.Connect(context.Background(), pgconfig)
     if err != nil {
@@ -34,23 +34,23 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
     defer conn.Close(context.Background())
 
-//    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
-//    if err != nil {
-//	fmt.Println(err)
-//    }
+    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
+    if err != nil {
+	fmt.Println(err)
+    }
+    defer rows.Close()
+    for rows.Next() {
+	var menuItem MenuStruct
+	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
+	if err != nil {
+	    panic(err)
+	}
+	menuItems = menuItems +" | "+  menuItem.Fieldname
+    }
 
-//    for rows.Next() {
-//	var menuItem MenuStruct
-//	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
-//	if err != nil {
-//	    panic(err)
-//	}
-//	menuItems = menuItems +" | "+  menuItem.Fieldname
-//    }
-//    defer rows.Close()
 
-    fmt.Fprintf(w, "ololo")
-//    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
+//    fmt.Fprintf(w, "ololo")
+    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
 
 func main() {
