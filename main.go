@@ -52,6 +52,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     tMenu := template.New("Menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
     err = tMenu.Execute(w, menuItems)
+    fmt.Println(err)
 
 //    fmt.Fprintf(w, "ololo")
 //    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
