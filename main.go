@@ -4,9 +4,14 @@ import (
     "fmt"
     "log"
     "net/http"
+    "github.com/jackc/pgx"
+    "github.com/jackc/pgconn"
+    "context"
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
+    var config Config
+
     fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
 }
 
