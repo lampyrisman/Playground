@@ -18,16 +18,17 @@ type MenuStruct struct {
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var config pgx.ConnConfig
-    config.Host = "pg.sm"
-    config.Port = 5432
-    config.Database = "spaceworld"
-    config.User = "site"
-    config.Password = "siteread"
-    
+    config := pgx.ConnConfig{
+    Host:  "pg.sm"
+    Port: 5432
+    Database: "spaceworld"
+    User: "site"
+    Password: "siteread"
+    }
+
     var menuItems string
 
-    conn, err := pgx.ConnectConfig(context.Background(), config)
+    conn, err := pgx.ConnectConfig(context.Background(), *config)
     if err != nil {
     panic(err)
     }
