@@ -10,7 +10,7 @@ import (
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var config *pgx.Config
+    var config *pgx.ConnConfig
     config.Host = "pg.sm"
     config.Port = 5432
     config.Database = "spaceworld"
@@ -21,7 +21,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     if err != nil {
     panic(err)
     }
-    defer conn.Close()
+    defer conn.Close(context.Background())
 
 
     fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
