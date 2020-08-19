@@ -4,6 +4,7 @@ import (
     "fmt"
     "log"
     "net/http"
+    "html/template"
     "github.com/jackc/pgx"
     "context"
 )
@@ -48,9 +49,11 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	menuItems = menuItems +" | "+  menuItem.Fieldname
     }
 
+    t_menu, err := template.New("menu").ParseFile(`templates/menu.tmpl`)
+    err = t_menu.Execute(menu,nil)
 
 //    fmt.Fprintf(w, "ololo")
-    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
+//    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
 
 func main() {
