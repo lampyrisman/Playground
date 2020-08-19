@@ -49,8 +49,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	menuItems = append(menuItems, menuItem)
     }
 
-
-    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
+    fmt.Fprintf(w, menuItems)
+//    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
 
 func main() {
