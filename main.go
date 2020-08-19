@@ -50,7 +50,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	menuItems = menuItems +" | "+  menuItem.Fieldname
     }
 
-    fmt.Fprintf(w, menuItems)
+    fmt.Fprintf(w, "ololo")
 //    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
 
