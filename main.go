@@ -46,7 +46,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 //	    panic(err)
 //	}
 //	menuItems = menuItems +" | "+  menuItem.Fieldname
-    }
+//    }
     defer rows.Close()
 
     fmt.Fprintf(w, "ololo")
