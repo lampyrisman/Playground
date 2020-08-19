@@ -49,7 +49,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	menuItems = menuItems +" | "+  menuItem.Fieldname
     }
 
-    t_menu, err := template.New("menu").ParseFile(`templates/menu.tmpl`)
+    t_menu, err := template.ParseFile(`templates/menu.tmpl`)
     err = t_menu.Execute(menu,nil)
 
 //    fmt.Fprintf(w, "ololo")
