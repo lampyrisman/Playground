@@ -27,7 +27,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 //    pgconfig.Password = "siteread"
 
 
-    var menuItems string
+    var menuItems []MenuStruct
 
     conn, err := pgx.Connect(context.Background(), pgconfig)
     if err != nil {
@@ -46,12 +46,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 	    panic(err)
 	}
-	menuItems = menuItems +" | "+  menuItem.Fieldname
+	menuItems = append(menuItems, menuItem)
     }
     
     tMenu := template.New("Menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
-    err = tMenu.Execute(w, nil)
+    err = tMenu.Execute(w, menuItems)
 
 //    fmt.Fprintf(w, "ololo")
 //    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
