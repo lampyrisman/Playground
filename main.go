@@ -10,7 +10,7 @@ import (
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var config *pgconn.Config
+    var config *pgx.Config
     config.Host = "pg.sm"
     config.Port = 5432
     config.Database = "spaceworld"
