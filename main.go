@@ -17,7 +17,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     config.User = "site"
     config.Password = "siteread"
 
-    conn, err := pgx.Connect(context.Background(), config)
+    conn, err := pgx.ConnectConfig(context.Background(), config)
     if err != nil {
     panic(err)
     }
