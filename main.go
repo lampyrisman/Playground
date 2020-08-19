@@ -18,12 +18,12 @@ type MenuStruct struct {
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var pgconfig *pgx.ConnConfig
-    pgconfig.Host = "pg.sm"
-    pgconfig.Port = 5432
-    pgconfig.Database = "spaceworld"
-    pgconfig.User = "site"
-    pgconfig.Password = "siteread"
+    pgconfig :=  ParseConnectionString("user=site password=siteread host=pg.sm port=5432 dbname=spaceworld sslmode=off")
+//    pgconfig.Host = "pg.sm"
+//    pgconfig.Port = 5432
+//    pgconfig.Database = "spaceworld"
+//    pgconfig.User = "site"
+//    pgconfig.Password = "siteread"
 
 
 //    var menuItems string
