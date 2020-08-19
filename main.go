@@ -18,7 +18,7 @@ type MenuStruct struct {
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    config := pgx.ConnConfig{
+    config := *pgx.ConnConfig{
     Host:  "pg.sm",
     Port: 5432,
     Database: "spaceworld",
@@ -28,7 +28,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
     var menuItems string
 
-    conn, err := pgx.ConnectConfig(context.Background(), *config)
+    conn, err := pgx.ConnectConfig(context.Background(), config)
     if err != nil {
     panic(err)
     }
