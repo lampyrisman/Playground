@@ -25,7 +25,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     config.User = "site"
     config.Password = "siteread"
     
-    var menuItems []MenuStruct
+    var menuItems string
 
     conn, err := pgx.ConnectConfig(context.Background(), config)
     if err != nil {
@@ -46,7 +46,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 	    panic(err)
 	}
-	menuItems = append(menuItems, menuItem)
+	menuItems = menuItems +" | "+  menuItem.Fieldname
     }
 
     fmt.Fprintf(w, menuItems)
