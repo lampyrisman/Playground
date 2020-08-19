@@ -34,10 +34,10 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
     defer conn.Close(context.Background())
 
-    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
-    if err != nil {
-	fmt.Println(err)
-    }
+//    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
+//    if err != nil {
+//	fmt.Println(err)
+//    }
 
 //    for rows.Next() {
 //	var menuItem MenuStruct
