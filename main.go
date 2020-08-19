@@ -49,7 +49,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	menuItems = append(menuItems, menuItem)
     }
     
-    tMenu := template.New("Menu")
+    tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
     err = tMenu.Execute(w, menuItems)
     fmt.Println(err)
