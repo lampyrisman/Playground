@@ -50,8 +50,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
     
     tMenu := template.New("Menu")
-    tMenu, _ = tMenu.ParseFiles("templatees.tmpl", nil)  // Parse template file.
-    t_menu, err := template.ParseFile(`templates/menu.tmpl`)
+    tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl", nil)  // Parse template file.
     err = t_menu.Execute(w, nil)
 
 //    fmt.Fprintf(w, "ololo")
