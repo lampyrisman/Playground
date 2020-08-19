@@ -10,7 +10,7 @@ import (
 )
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var config Config
+    var config *pgx.Config
 
     fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
 }
