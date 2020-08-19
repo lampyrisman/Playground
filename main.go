@@ -23,7 +23,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     Port: 5432,
     Database: "spaceworld",
     User: "site",
-    Password: "siteread"
+    Password: "siteread",
     }
 
     var menuItems string
