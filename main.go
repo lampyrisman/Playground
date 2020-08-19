@@ -8,6 +8,15 @@ import (
     "context"
 )
 
+type MenuStruct struct {
+	Id		int
+	Level		int
+	Parent		int
+	Fieldname	string
+	Fieldtype	string
+	Fieldorder	int
+}
+
 func rootHandler(w http.ResponseWriter, r *http.Request) {
     var config *pgx.ConnConfig
     config.Host = "pg.sm"
@@ -15,6 +24,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     config.Database = "spaceworld"
     config.User = "site"
     config.Password = "siteread"
+    
+    var menuItems []MenuStruct
 
     conn, err := pgx.ConnectConfig(context.Background(), config)
     if err != nil {
@@ -22,8 +33,24 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
     defer conn.Close(context.Background())
 
+    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
+    if err != nil {
+	return err
+    }
 
-    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:])
+    defer rows.Close()
+
+    for rows.Next() {
+	var menuItem MenuStruct
+	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
+	if err != nil {
+	    return err
+	}
+	menuItems = append(menuItems, menuItem)
+    }
+
+
+    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
 }
 
 func main() {
