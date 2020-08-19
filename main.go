@@ -35,7 +35,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
     rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
     if err != nil {
-	return err
+	panic(err)
     }
 
     defer rows.Close()
@@ -44,7 +44,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	var menuItem MenuStruct
 	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
 	if err != nil {
-	    return err
+	    panic(err)
 	}
 	menuItems = append(menuItems, menuItem)
     }
