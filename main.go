@@ -18,7 +18,7 @@ type MenuStruct struct {
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
-    var pgconfig ConnConfig
+    var pgconfig pgx.ConnConfig
     pgconfig.Host = "pg.sm"
     pgconfig.Port = 5432
     pgconfig.Database = "spaceworld"
