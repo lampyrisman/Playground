@@ -37,7 +37,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     defer conn.Close(context.Background())
     err = conn.QueryRow(context.Background(), "select max(level) from catalog.mainmenu;").Scan(&maxlevel)
 
-    var inputArray [maxlevel]menuItems
+    var inputArray map[int]menuItems
         
     rows, err := conn.Query(context.Background(), "select id,level,parent,fieldorder,fieldname from catalog.mainmenu order by level")
     if err != nil {
