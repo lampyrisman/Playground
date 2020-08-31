@@ -60,18 +60,17 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 1; i-- {
 	if (i == forArrLen){
-	    fmt.Println("First Element, content", inputArray[i],"\n----------")
+	    fmt.Println("First Element, content", inputArray[i],"\n")
 	    for _,inVal := range inputArray[i]{
 		levelUp[inVal.Parent] = levelUp[inVal.Parent] + "|" + inVal.Fieldname
+		fmt.Println("Result = \n",levelUp,"\n------------")
 	    }
 	} else {
 	    for _,inVal := range inputArray[i]{
-		fmt.Println("Next Element, content", inputArray[i],"\n----------")
+		fmt.Println("Next Element, content", inputArray[i],"\n")
 		levelDown[inVal.Parent] = inVal.Fieldname + "\n\t" + levelUp[inVal.Id]
+		fmt.Println("Result = \n",levelDown,"\n------------")
 	    }
-	
-	fmt.Println("Level Upper = \n",levelUp,"\n------------")
-	fmt.Println("Level Down = \n",levelDown,"\n------------")
     }
 }
 
