@@ -51,12 +51,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 	    panic(err)
 	}
-	menuItems = append(menuItems, menuItem)
+	inputArray[menuItem.Level] = append(inputArray[menuItem.Level], menuItem)
     }
     
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
-    err = tMenu.Execute(w, menuItems)
+    err = tMenu.Execute(w, inputArray)
     fmt.Println(err)
 
 //    fmt.Fprintf(w, "ololo")
