@@ -77,6 +77,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		levelUp = levelDown
     }
 }
+		fmt.Println("-------- Summary ----------- \n",levelUp,"\n---------------")
 
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
