@@ -4,7 +4,6 @@ import (
     "fmt"
     "log"
     "net/http"
-    "html/template"
     "github.com/jackc/pgx"
     "context"
 )
@@ -18,7 +17,7 @@ type MenuStruct struct {
 }
 
 
-func genMainMenu (outstring string){
+func genMainMenu ()(outstring string){
     var maxlevel int
     // dev stand - password is fake
     pgconfig := "user=site password=siteread host=pg.sm port=5432 dbname=spaceworld"
