@@ -51,6 +51,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	inputArray[menuItem.Level] = append(inputArray[menuItem.Level], menuItem)
     }
+
+    fmt.Println("inputArray len = ",len(inputArray))
     
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
