@@ -57,11 +57,11 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     levelUp := make(map[int]string)
 
     for i := len(inputArray)-1; i >= 1; i-- {
-	fmt.Println("level", i, "content", inputArray[i], "\n-------------")
+	fmt.Println("level", i, "content", inputArray[i])
 	for _,inVal := range inputArray[i]{
 	    levelUp[inVal.Parent] = levelUp[inVal.Parent] +" | "+ inVal.Fieldname
 	}
-	fmt.Println("Level Upper = ",levelUp)
+	fmt.Println("Level Upper = ",levelUp,"\n------------")
     }
 
     tMenu := template.New("menu")
