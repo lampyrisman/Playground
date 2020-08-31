@@ -53,8 +53,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
 
     fmt.Println("inputArray len (menu levels) = ",len(inputArray))
-    for i := len(inputArray); i == 1; i--{
-	fmt.Println("level", i ; "content", inputArray[i])
+    for i := len(inputArray); i == 1; i-- {
+	fmt.Println("level", i, "content", inputArray[i])
     }
 
     tMenu := template.New("menu")
