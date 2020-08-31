@@ -13,9 +13,8 @@ type MenuStruct struct {
 	Id		int
 	Level		int
 	Parent		int
+	Fieldorder	string
 	Fieldname	string
-	Fieldtype	string
-	Fieldorder	int
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +41,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     defer rows.Close()
     for rows.Next() {
 	var menuItem MenuStruct
-	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldname, &menuItem.Fieldtype, &menuItem.Fieldorder)
+	err = rows.Scan(&menuItem.Id, &menuItem.Level, &menuItem.Parent, &menuItem.Fieldorder,&menuItem.Fieldname)
 	if err != nil {
 	    panic(err)
 	}
