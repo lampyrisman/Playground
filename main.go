@@ -49,7 +49,6 @@ func genMainMenu ()(outstring string){
     
     levelUp  := make(map[int]string)
     levelDown := make(map[int]string)
-    var outstring string
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 1; i-- {
 	if (i == forArrLen){
