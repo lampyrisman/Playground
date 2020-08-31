@@ -79,7 +79,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
 }
 		for _, tmpstr := range levelUp {
-		    outstring = outstring + "<ul>"+tmpstr+"</ul>"
+		    outstring = outstring + " "+tmpstr
 		}
 
 		fmt.Println("-------- Summary ----------- \n",levelUp,"\n---------------")
