@@ -66,6 +66,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	    }
 	} else {
 	    for _,inVal := range inputArray[i]{
+		fmt.Println("Next Element, content", inputArray[i],"\n----------")
 		levelDown[inVal.Parent] = inVal.Fieldname + "\n\t" + levelUp[inVal.Id]
 	    }
 	
