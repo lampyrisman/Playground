@@ -54,7 +54,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
     fmt.Println("inputArray len (menu levels) = ",len(inputArray))
     
-    levelUp, levelDown := make(map[int]string)
+    levelUp  := make(map[int]string)
+    levelDown := make(map[int]string)
 
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 1; i-- {
