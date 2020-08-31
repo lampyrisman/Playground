@@ -63,14 +63,16 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	    fmt.Println("First Element, content", inputArray[i],"\n")
 	    for _,inVal := range inputArray[i]{
 		levelUp[inVal.Parent] = levelUp[inVal.Parent] + "|" + inVal.Fieldname
-		fmt.Println("Result = \n",levelUp,"\n------------")
+
 	    }
+		fmt.Println("Result = \n",levelUp,"\n------------")
 	} else {
 	    for _,inVal := range inputArray[i]{
 		fmt.Println("Next Element, content", inputArray[i],"\n")
 		levelDown[inVal.Parent] = inVal.Fieldname + "\n\t" + levelUp[inVal.Id]
-		fmt.Println("Result = \n",levelDown,"\n------------")
+
 	    }
+		fmt.Println("Result = \n",levelDown,"\n------------")
     }
 }
 
