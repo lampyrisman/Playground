@@ -13,7 +13,7 @@ type MenuStruct struct {
 	Id		int
 	Level		int
 	Parent		int
-	Fieldorder	string
+	Fieldorder	int
 	Fieldname	string
 }
 
