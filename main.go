@@ -18,16 +18,10 @@ type MenuStruct struct {
 }
 
 
-func rootHandler(w http.ResponseWriter, r *http.Request) {
+func genMainMenu (outstring string){
     var maxlevel int
+    // dev stand - password is fake
     pgconfig := "user=site password=siteread host=pg.sm port=5432 dbname=spaceworld"
-//    pgconfig.Host = "pg.sm"
-//    pgconfig.Port = 5432
-//    pgconfig.Database = "spaceworld"
-//    pgconfig.User = "site"
-//    pgconfig.Password = "siteread"
-
-
     conn, err := pgx.Connect(context.Background(), pgconfig)
     if err != nil {
     fmt.Println(err)
@@ -70,7 +64,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	    for _,inVal := range inputArray[i]{
 		fmt.Println(inVal,"\t",levelUp[inVal.Id])
 		levelDown[inVal.Parent] = levelDown[inVal.Parent]  + "<li>"+inVal.Fieldname + "<ul>" + levelUp[inVal.Id] + "</ul></li>"
-//		levelDown[inVal.Parent] = inVal.Fieldname + "\t"
 
 	    }
 		fmt.Println("Result = \n",levelDown,"\n------------")
@@ -83,15 +76,12 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		fmt.Println("-------- Summary ----------- \n",levelUp,"\n---------------")
-
-    tMenu := template.New("menu")
-    tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
-//    err = tMenu.Execute(w, levelUp)
-    fmt.Fprintf(w, `<!doctype html> <html lang="ru">`+outstring+`</html>`)
     fmt.Println(err)
+    return outstring
+}
 
-//    fmt.Fprintf(w, "ololo")
-//    fmt.Fprintf(w, "Hi there, I love %s!", r.URL.Path[1:], menuItems)
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, `<!doctype html> <html lang="ru">`+genMainMenu()+`</html>`)
 }
 
 func main() {
