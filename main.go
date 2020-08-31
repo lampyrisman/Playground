@@ -59,7 +59,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     for i := len(inputArray)-1; i >= 1; i-- {
 	fmt.Println("level", i, "content", inputArray[i])
 	for _,inVal := range inputArray[i]{
-	    levelUp[inVal.Parent] = levelUp[inVal.Parent] + " | " + inVal.Fieldname
+	    levelUp[inVal.Parent] = levelUp[inVal.Parent] + "|" + inVal.Fieldname
 	}
 	fmt.Println("Level Upper = \n",levelUp,"\n------------")
     }
