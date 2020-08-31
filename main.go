@@ -56,7 +56,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     
     levelUp  := make(map[int]string)
     levelDown := make(map[int]string)
-
+    var outstring string
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 1; i-- {
 	if (i == forArrLen){
@@ -77,12 +77,16 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		levelUp = levelDown
     }
 }
+		for _, tmpstr := range levelUp {
+		    outstring = outstring + " " + tmpstr
+		}
+
 		fmt.Println("-------- Summary ----------- \n",levelUp,"\n---------------")
 
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
 //    err = tMenu.Execute(w, levelUp)
-    fmt.Fprintf(w, levelUp)
+    fmt.Fprintf(w, outstring)
     fmt.Println(err)
 
 //    fmt.Fprintf(w, "ololo")
