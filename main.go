@@ -58,7 +58,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     levelDown := make(map[int]string)
 
     forArrLen := len(inputArray)-1
-    for i := forArrLen; i >= 1; i-- {
+    for i := forArrLen; i >= 2; i-- {
 	if (i == forArrLen){
 	    fmt.Println("First Element, content", inputArray[i],"\n")
 	    for _,inVal := range inputArray[i]{
