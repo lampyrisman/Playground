@@ -35,7 +35,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     }
     defer conn.Close(context.Background())
 
-    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldname,fieldtype,fieldorder from catalog.menu")
+    rows, err := conn.Query(context.Background(), "select id,level,parent,fieldorder,fieldname from catalog.mainmenu order by level")
     if err != nil {
 	fmt.Println(err)
     }
