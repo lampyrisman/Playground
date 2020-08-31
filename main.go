@@ -67,10 +67,11 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	    for _,inVal := range inputArray[i]{
 		levelDown[inVal.Parent] = inVal.Fieldname + "\n\t" + levelUp[inVal.Parent]
 	    }
-	{
+	
 	fmt.Println("Level Upper = \n",levelUp,"\n------------")
 	fmt.Println("Level Down = \n",levelDown,"\n------------")
     }
+}
 
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
