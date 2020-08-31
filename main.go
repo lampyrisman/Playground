@@ -81,7 +81,8 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 
     tMenu := template.New("menu")
     tMenu, _ = tMenu.ParseFiles("templates/menu.tmpl")  // Parse template file.
-    err = tMenu.Execute(w, levelUp)
+//    err = tMenu.Execute(w, levelUp)
+    fmt.Fprintf(w, levelUp)
     fmt.Println(err)
 
 //    fmt.Fprintf(w, "ololo")
