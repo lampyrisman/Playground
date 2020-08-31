@@ -55,7 +55,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     fmt.Println("inputArray len (menu levels) = ",len(inputArray))
     
     levelUp  := make(map[int]string)
-    levelDown := make(map[int]string)
+//    levelDown := make(map[int]string)
 
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 2; i-- {
@@ -68,9 +68,9 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		fmt.Println("Next Element, content", inputArray[i],"\n")
 	    for _,inVal := range inputArray[i]{
-
+		fmt.Println(inVal,"\n")
 //		levelDown[inVal.Parent] = inVal.Fieldname + "\t" + levelUp[inVal.Id]
-		levelDown[inVal.Parent] = inVal.Fieldname + "\t"
+//		levelDown[inVal.Parent] = inVal.Fieldname + "\t"
 
 	    }
 		fmt.Println("Result = \n",levelDown,"\n------------")
