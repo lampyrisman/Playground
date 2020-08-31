@@ -28,8 +28,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 //    pgconfig.Password = "siteread"
 
 
-    var menuItems []MenuStruct
-
     conn, err := pgx.Connect(context.Background(), pgconfig)
     if err != nil {
     fmt.Println(err)
