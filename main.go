@@ -75,7 +75,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	    }
 		fmt.Println("Result = \n",levelDown,"\n------------")
 		levelUp = levelDown
-		levelDown = nil
+		levelDown = levelDown[:0]
     }
 }
 		for _, tmpstr := range levelUp {
