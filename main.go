@@ -62,7 +62,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	if (i == forArrLen){
 	    fmt.Println("First Element, content", inputArray[i],"\n")
 	    for _,inVal := range inputArray[i]{
-		levelUp[inVal.Parent] = levelUp[inVal.Parent] + "|" + inVal.Fieldname
+		levelUp[inVal.Parent] = levelUp[inVal.Parent] + "<li>" + inVal.Fieldname + "</li>"
 	    }
 		fmt.Println("Result = \n",levelUp,"\n------------")
 	} else {
