@@ -60,7 +60,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
     forArrLen := len(inputArray)-1
     for i := forArrLen; i >= 1; i-- {
 	if (i == forArrLen){
-	    fmt.Println("First Element, content", inputArray[i])
+	    fmt.Println("First Element, content", inputArray[i],"\n----------")
 	    for _,inVal := range inputArray[i]{
 		levelUp[inVal.Parent] = levelUp[inVal.Parent] + "|" + inVal.Fieldname
 	    }
